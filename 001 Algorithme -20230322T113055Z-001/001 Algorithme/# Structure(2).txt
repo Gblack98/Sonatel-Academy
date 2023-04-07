@@ -1,0 +1,580 @@
+                   # Structure Conditionnelle
+
+# Exercice 1:
+
+Algorithme Résistance ;
+
+Variables
+       Reel R1, R2, R3;
+       Entier a;
+
+Début
+
+    Écrire (" Que souhaitez vous calculer");
+    Lire(a);
+    Écrire (" Entrer les 3 valeurs:");
+    Lire(R1,R2,R3)
+    Si (a=1) alors:
+             Écrire(" la résistance en série est de:", R1+R2+R3);
+             Sinon si (a=2);
+                       Écrire (" La résistance en parallèle est de :", (R1*R2*R3)/(R1*R2+R1*R3+R2*R3));
+             Sinon :
+                       Écrire ("Choix non pris en compte");
+
+Fin
+
+# Exercice 2
+
+Algorithme Calculatrice ;
+
+Variables:
+Réel a, b;
+Entier c;
+
+Début
+
+   Écrire (" Vous êtes sur le point de faire une opération");
+   Écrire (" Taper 1 pour faire une addition, 2 pour la multiplication, 3 pour la soustraction et 4 pour la division");
+   Lire(c)
+   Écrire (" Entrez les valeurs de a et b");
+   Si (c=1) alors:
+                  Écrire ("Résultat: ", a+b);
+            Sinon Si (c=2) alors:
+                       Écrire ("Résultat :", a*b);
+            Sinon Si (c=3) alors:
+                        Écrire ("Résultat :",a-b);
+
+            Sinon Si (c=4) alors:
+                            Si ( b≠0) alors:
+                                     Écrire ("Résultats :", a/b);
+                                  Sinon:
+                                      Écrire(" Erreur ! Dénominateur nul ");
+                            FinSi
+            Sinon :
+                     Écrire (" Votre choix n'est pas pris en compte");
+
+       FinSi
+
+Fin
+
+# Exercice 3: 
+
+Algorithme Équation1 ;
+
+Variable:
+Réel a, b;
+
+Début
+ 
+       Écrire (" Entrez la valeur de a et b tel que a ne soit pas nul");
+       Lire ( a, b);
+       Si (a≠0) alors:
+                   Écrire ("Résultat :", -b/a);
+              Sinon:
+                   Écrire (" Le coefficient a ne doit pas être nul");
+
+Finsi
+
+Fin
+
+
+# Exercice 4:
+
+Algorithme Équation2;
+
+Variable:
+Réel a, b, c, D;
+
+Début 
+
+     Écrire (" Entrez les 3 coefficient tel que a ne soit pas nul");
+     Lire(a, b, c);
+
+     Si (a≠0) alors :
+            Si (b≠0) alors :
+                          D<— b^2-4*a*c;
+                          Si (D=0) alors:
+                                  Écrire (" Une seule solution :",-b/2*a);
+
+                                   Sinon Si ( D>0) alors:
+                        
+                                             Écrire ("Deux solutions réelles :", (-b-racine(D))/2*a);
+                                     Sinon:
+                                              Écrire (" Nous aurons deux solutions complexes de parties réelles communes :", -b/2*a," et de parties imaginaires respectives :", -racine(D)/2*a," et :", racine (D)/2*a);
+
+     
+                       FinSi 
+                FinSi
+         FinSi 
+                
+Fin
+        
+
+# Exercice 5
+# Imbriqué
+
+Algorithme Jours;
+
+Variable
+Entier a;
+
+Début
+       Écrire (" Entrez la valeur");
+       Lire(a);
+       Si (a=1) alors:
+             Écrire ("Lundi");
+             Sinon Si (a=2) alors: 
+                      Écrire (" Mardi"); 
+             Sinon Si (a=3) alors:
+                      Écrire ("Mercredi");
+             Sinon Si (a=4) alors:
+                      Écrire ("Jeudi");
+             Sinon Si (a=5) alors:
+                      Écrire ("Vendredi");
+             Sinon Si (a=6) alors:
+                      Écrire (" Samedi");
+             Sinon Si (a=7) alors:
+                      Écrire ("Dimanche");
+             Sinon :
+                      Écrire (" Choix non pris en compte");
+         FinSi
+Fin
+
+# Exercice 6
+
+Algorithme Monnaie ;
+
+Variable:
+Entier M, b20, b10, b5, b2, b1;
+
+Début
+         Écrire ("Donnez un montant");
+         Lire (M);
+         b20<—M div 20;
+         M<—M mod 20;
+         Si (M≠0) alors :
+                b10<—M div 10;
+                M<—M mod 10;
+         FinSi
+         Si ( M≠0) alors :
+                b5<—M div 5;
+                M<—M mod 5;
+         FinSi 
+         Si (M≠0) alors:
+                b2<—M div 2;
+                b1<—M mo2 1;
+         FinSi
+         Écrire ("Le montant est décomposer en :",b20," billets de 20 ",b10," billets de 10 ", b5," billets de 5 ", b2," pièces de 2 et ",b1," pièces de 1");
+   
+
+# Exercice 7
+
+Algorithme Ordre;
+Variable
+Réel a, b;
+
+Début
+         Écrire ("Entrez les deux valeurs");
+         Lire (a,b);
+         Si (a<b) alors:
+                    Écrire ("Par ordre croissant :",a, b);
+                    Écrire ("Par ordre décroissant :", b, a);
+              Sinon Si(a>b) alors :
+                     Écrire ("Par ordre croissant :", b, a);
+                     Écrire ("Par ordre décroissant :", a, b); 
+              Sinon :
+                     Écrire (" Nous avons une égalité !");
+
+         FinSi
+Fin
+
+# Exercice 8:
+
+Algorithme Ordre ;
+
+Variable:
+Réel a, b, c;
+
+Début
+       Écrire ("Entrez les 3 valeurs :");
+       Lire(a, b, c);
+       Si ( a<b et b<c) alors:
+                 Écrire ( "Par ordre décroissant :", c, b, a," Et croissant :", a, b, c);
+             Sinon Si ( b<c et c<a) alors:
+                     Écrire (" Par ordre décroissant :", a, c, b," Et croissant :", b, c, a);
+             Sinon Si (c<a et a<b) alors:
+                     Écrire (" Par ordre décroissant :", c, a ,b," Et croissant", b, a, c);
+             Sinon Si ( a<c et c<b) alors:
+                     Écrire (" Par ordre décroissant :", b, c, a," Et croissant :", a, c, b);
+             Sinon Si (b<a et a<c) alors:
+                     Écrire (" Par ordre décroissant :", b, a ,c," Et croissant", c, a, b);
+             Sinon Si (c<b et b<a) alors:
+                      Écrire ("Par ordre décroissant :", a, b, c," Et croissant", c, b, a);
+             Sinon: 
+                      Écrire (" Il y a une égalité ");
+      FinSi
+
+Fin
+
+# Exercice 9:
+
+Algorithme Ordre1;
+
+Variable;
+Réel a, b, c, d;
+
+Début
+       Écrire ("Entrez les 4 valeurs :");
+       Lire(a, b, c, d);
+            Si ( a<b et b<c et c<d ) alors:
+                      Écrire ("Croissant", a, b, c, d);
+                      Écrire (" Décroissant", d, c, b, a)
+            FinSi 
+            Si( a<b et  b<d et d<c) alors:
+                      Écrire ("Croissant", a, b, d, c);
+                      Écrire (" Décroissant", d, c, a, b);
+            FinSi
+            Si(a<c et c<b et b<d) alors:
+                      Écrire ("Croissant", a, c, b, d);
+                      Écrire (" Décroissant", d, b, c, a);
+            FinSi
+            Si (a<c et c<d et d<b) alors:
+                      Écrire ("Croissant", a, c, d, b);
+                      Écrire (" Décroissant", b, d, c, a);
+            FinSi
+            Si (a<d et d<b et b<c) alors:
+                      Écrire ("Croissant", a, d, b, c);
+                      Écrire (" Décroissant", c, b, d, a);
+            FinSi
+            Si (a<d et d<c et c<b) alors :
+                      Écrire ("Croissant", a, d, c, b);
+                      Écrire (" Décroissant", b, c, d, a);
+            FinSi
+            Si (b<a et a<c et c<d) alors :
+                      Écrire ("Croissant", b, a, c, d);
+                      Écrire (" Décroissant", d, c, a, b)
+            FinSi 
+            Si (b<c et c<a et a<d) alors :
+                      Écrire ("Croissant", b, c, a, d);
+                      Écrire (" Décroissant", d, a, c, b);
+            FinSi
+            Si (b<c et c<d et d<a) alors :
+                      Écrire ("Croissant", b, c, d, a);
+                      Écrire (" Décroissant", a, d, c, b);
+            FinSi 
+              Si (b<d et d<a et a<c) alors :
+                      Écrire ("Croissant", b, d, a, c);
+                      Écrire (" Décroissant", c, a, d, b);
+            FinSi 
+            Si (b<d et c<a et c<a) alors :
+                      Écrire ("Croissant", b, d, c, a);
+                      Écrire (" Décroissant", a, c, d, b);
+            FinSi 
+            Si (c<a et a<b et b<d) alors :
+                      Écrire ("Croissant", c, a, b, d);
+                      Écrire (" Décroissant", d, b, a, c);
+            FinSi 
+            Si (c<a et a<d et d<b) alors :
+                      Écrire ("Croissant", c, a, d, b);
+                      Écrire (" Décroissant", b, d, a, c);
+            FinSi 
+            Si (c<b et b<a et a<d) alors :
+                      Écrire ("Croissant", c, b, a, d);
+                      Écrire (" Décroissant", d, a, b, c);
+            FinSi 
+            Si (c<b et b<d et d<a) alors :
+                      Écrire ("Croissant", c, b, d, a);
+                      Écrire (" Décroissant", a, d, b, c);
+            FinSi 
+            Si (c<d et d<a et a<b) alors :
+                      Écrire ("Croissant", c, d, a, b);
+                      Écrire (" Décroissant", b, a, d, c);
+            FinSi
+            Si (c<d et d<b et b<a) alors :
+                      Écrire ("Croissant", c, d, b, a);
+                      Écrire (" Décroissant", a, b, d, c);
+            FinSi
+            Si (d<a et a<b et b<c) alors :
+                      Écrire ("Croissant", d, a, b, c);
+                      Écrire (" Décroissant", c, b, a, d);
+            FinSi
+            Si (d<a et a<c et c<b) alors :
+                      Écrire ("Croissant", d, a, c, b);
+                      Écrire (" Décroissant", b, c, a, d);
+            FinSi
+            Si (d<b et b<a et a<c) alors :
+                      Écrire ("Croissant", d, b, a, c);
+                      Écrire (" Décroissant", c, a, b, d);
+            FinSi
+            Si (d<b et b<c et c<a) alors :
+                      Écrire ("Croissant", d, b, c, a);
+                      Écrire (" Décroissant", a, c, b, d);
+            FinSi
+            Si (d<c et c<a et a<b) alors :
+                      Écrire ("Croissant", d, c, a, b);
+                      Écrire (" Décroissant", b, a, c, d);
+            FinSi
+            Si (d<c et c<b et b<a) alors :
+                      Écrire ("Croissant", d, c, b, a);
+                      Écrire (" Décroissant", a, b, c, d);    
+            FinSi
+Fin
+
+# Exercice 10:
+
+Algorithme Année ;
+
+Variable:
+Entier a;
+
+Début
+     Écrire ("Entrez l'année :");
+     Lire (a);
+     Si( (a mod 4=0)ou( a mode100=0 et a mod 400=0)) alors:
+             Écrire (" Année bissextile");
+          Sinon :
+                Écrire (" Année non bissextile");
+
+     FinSi
+Fin
+
+# Exercice 11:
+
+Algorithme NombreJours;
+
+Variable:
+Entier a, m;
+
+Début
+      Écrire ("Entrez une année et un mois");
+      Lire(a,m);
+      Si( m=2) alors:
+             Si ((a mod 4=0 et a mod 100=0) ou ( a mod 400=0)) alors :
+                        Écrire (" Année bissextile, :", 29," jours");
+                        Sinon:
+                              Écrire (" Vous aurez 28  jours"); 
+                        FinSi 
+              
+                  Sinon:
+                        Si( m=4 ou m=6 ou m=9 ou m=11) alors:
+                                Écrire (" On a 30 jours");
+                        Sinon:
+                                Si ( m=1 ou m=3 ou m=5 ou m=7 ou m=8 ou m=10 ou m=12) alors:
+                                        Écrire ("Nous avons 31 jours");
+                                       Sinon:
+                                              Écrire ("Date non pris en compte");
+                                FinSi 
+                        FinSi
+                 FinSi
+Fin
+
+# Exercice 12 :
+
+Algorithme DateValide;
+
+Variable:
+Entier J, M, A;
+
+Début
+     Écrire ("Entrez la date au format JJ/MM/AA");
+     Lire(J, M, A);
+     Si ((J<0 ou J>31) ou ( M<0 ou M>12) ou (A<0)) alors :
+               Écrire ("Entrez une Date validé !");
+           Sinon:
+                  Si (M=2 ) alors:
+                          Si ((a mod 4=0 et a mod 100=0) ou ( a mod 400=0)) alors :
+                                  Si ( J>29) alors :
+                                              Écrire (" Date Invalide");
+                                          Sinon :
+                                                 Écrire ("Valide");
+                                  FinSi
+                         FinSi 
+                    Sinon:
+                          Si ( M=4 ou M=6 ou M=9 ou M=11) alors:
+                                  Si (J>30) alors :
+                                           Écrire ("Invalide");
+                                       Sinon :
+                                                Écrire ("Valide");
+                                  FinSi
+                         Sinon :
+                                  Si (M=1 ou M=3 ou M=5 ou M=7 ou M=8 ou M=10 ou M=12) alors:
+                                            Si(J>31) alors:
+                                                     Écrire ("Invalide");                                  
+                                                  Sinon :
+                                                        Écrire ("Valide");                   
+                                            Finsi
+                                    FinSi
+                            FinSi
+                    FinSi 
+            FinSi  
+Fin
+
+# Exercice  13:
+
+Algorithme DateSuivante;
+
+Variable:
+Entier J, M, A;
+
+Début 
+       Écrire ("Entrez la date en format JJ/MM/AA");
+       Lire(J,M,A);
+       Si (M=2) alors:
+                Si ( ((A mod 4)=0 et (A mod 100)=0) ou ((A mod 400)=0) ) alors:
+                        Si (J=29) alors:
+                              Écrire ("Le : 01/03/",A);
+                              Sinon: 
+                                    Si (J>29) alors:
+                                             Écrire (" Invalide");
+                                         Sinon :
+                                                  Écrire ("Valide :",  J+1/M/A);
+                                    FinSi
+                        FinSi
+                Sinon : 
+
+
+
+
+# Exercice 18:
+
+Algorithme Comparaison ;
+
+Variable:
+Entier a, b, c, a1, b1, c1 ;
+
+Début
+      Écrire ("Entrez les deux dates sous format JJ/MM/AAAA");
+      Lire(a, b, c);
+      Lire(a1, b1, c1);
+
+       Si ( b=2 et b1=2) alors:
+                  Si (((c mod 4=0 ) et (c mod 100=0) ou ( c mod 400=0)) ou ( (c1 mod 4=0 ) et (c1 mod 100=0) ou ( c1 mod 400=0))) alors :
+                              Si (((a>0 et a<=29) et (a1>0 et a1<=29)) et (a=a1)) alors :
+                                        Écrire ("Correspondance);
+                              Sinon 
+                                      Écrire (" Il n'y a pas de correspondance ");
+                   Sinon :
+                        Si ( ((a>0 et a<=28) et (a1>0 et a1<=28))et (a=a1)) alors : 
+                             Écrire("Correspondance") ;   
+                        Sinon :
+                              Écrire ("Pas de correspondance");                  
+                       
+     Si ((a>0 et a<29) et (a1>0 et a1<29) et (b>0 et b<13) et (b1>0 et b1<13) et (a>0 et a1>0)) alors :
+               Si ( a=a1, b==b1, c=1) alors:
+                        Écrire ("Correspondance !");
+               Sinon :
+                       Écrire (" Il n'y a pas de Correspondance");
+                     FinSi
+                 FinSi
+              FinSi
+           FinSi
+       FinSi 
+   FinSi 
+Fin
+
+# Exercice 19:
+
+Algorithme Conversion;
+Variable:
+Entier n, h, m, s;
+
+Début
+       Écrire ("Entrez une valeur entière");
+       Lire(n);
+       Si(n<0) alors:
+               Écrire ("Entrez un entier");
+            Sinon :
+                  h<— n div 3600;
+                  m<— (n mod 3600)*60
+                  s<— (m mod 60)*60
+                  Écrire (n,"secondes=",h,"heures",m,"minutes",s,"secondes");
+       FinSi
+Fin
+
+# Exercice 21:
+
+Algorithme Divisible ;
+
+Variable:
+Entier n, i;
+
+Début
+     Écrire ("Donner un entier");
+     Lire(n);
+     i<— n mod 10;
+     Si ( i>0) alors :
+               Si (n mod i=0) alors:
+                     Écrire (n," est divisible par",i);
+                 Sinon :
+                          Écrire (n,"n'est pas divisible par ", i);
+               Finsi
+           Sinon :
+                  Écrire ("Erreur");
+      FinSi
+Fin
+
+# Exercice 22
+
+Algorithme Saison
+
+Variable:
+Entier n;
+
+Début
+     Écrire (" Entrez le nombre de mois");
+     Lire (n);
+     Si (n>1 et n<12) alors:
+            Écrire (" Erreur ! Entrez un autre numéro");
+     Sinon :
+            Si ( n=12 ou n=1 ou n=2) alors:
+                       Écrire (" Saison : Hiver");
+            Sinon 
+                    Si (n=3 ou n=4 ou n=5) alors:
+                             Écrire (" Saison : Printemps");
+                    Sinon :
+                             Si ( n=6 ou n=7 ou n=8) alors:
+                                       Écrire ("Saison : Été");
+                                  Sinon :
+                                            Si ( n=9 ou n=10 ou n=11)alors :
+                                                  Écrire ("Saison : Automne");
+                      FinSi
+                   Finsi
+                Finsi
+             Finsi
+          Finsi
+Fin
+
+
+
+
+      
+
+                
+       
+
+         
+              
+     
+                
+                            
+
+
+
+                   
+                                    
+                              
+ 
+      
+            
+
+     
+
+
+
+
+
+
+
+
+
+        

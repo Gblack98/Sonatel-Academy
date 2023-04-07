@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+    <style>
+  /* Centrer les éléments de la page */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #4d394b;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* En-tête */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+h1 {
+  color: #fff;
+  font-size: 36px;
+  margin: 0;
+  text-align: center;
+  text-shadow: 2px 2px #000;
+}
+
+/* Formulaire */
+form {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.checkbox-group label {
+  width: calc(50% - 10px);
+}
+
+.checkbox-group label input {
+  margin-right: 5px;
+}
+
+button[type="submit"] {
+  background-color: #8e44ad;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #9b59b6;
+}
+
+/* Champ de texte pour le mot de passe */
+#password {
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  box-sizing: border-box;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+}
+
+#password:hover {
+  cursor: pointer;
+}
+#generate :hover{
+    background-color: blue;
+
+}
+#copier :hover{
+    background-color: blue;
+
+}
+
+/* Tooltip */
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#password:hover + .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+    </style>
+</head>
+<body>
+    <div>
+        <label for="length">Longueur du mot de passe (15-20) :</label>
+        <input type="number" id="length" min="15" max="20" value="15"><br><br>
+        <label>Format du mot de passe :</label><br>
+        <input type="checkbox" id="uppercase" checked>
+        <label for="uppercase">Lettres Majuscules</label><br>
+        <input type="checkbox" id="lowercase" checked>
+        <label for="lowercase">Lettres Minuscules</label><br>
+        <input type="checkbox" id="numbers" checked>
+        <label for="numbers">Les Nombres</label><br>
+        <input type="checkbox" id="special" checked>
+        <label for="special">Caractères spéciaux</label><br><br>
+        <button id="generate" disabled>Générer Mot de passe</button><br><br>
+        <label for="password">Mot de passe :</label>
+        <input type="text" id="password" readonly><br><br>
+        <button id="copier" enabled>Copier</button>
+      </div>      
+    <script>
+// Variables pour les éléments HTML
+const lengthInput = document.querySelector("#length");
+const lowercase = document.querySelector("#lowercase");
+const uppercase = document.querySelector("#uppercase");
+const numbers = document.querySelector("#numbers");
+const special = document.querySelector("#special");
+const generate = document.querySelector("#generate");
+const password = document.querySelector("#password");
+const copier=document.querySelector("#copier");
+// Fonction pour mettre à jour l'état du bouton de génération de mot de passe
+const updateGenerateButton = () => {
+  const hasCheckedCriteria = lowercase.checked || uppercase.checked || numbers.checked || special.checked;
+  const isLengthValid = lengthInput.value >= 15 && lengthInput.value <= 20;
+  generate.disabled = !hasCheckedCriteria || !isLengthValid;
+};
+
+// Fonction pour générer un mot de passe aléatoire et l'afficher
+const generateAndDisplayPassword = () => {
+  const length = lengthInput.value;
+  let charset = "";
+  if (lowercase.checked) charset += "abcdefghijklmnopqrstuvwxyz";
+  if (uppercase.checked) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  if (numbers.checked) charset += "0123456789";
+  if (special.checked) charset += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+  let passwordText = "";
+  for (let i = 0; i < length; i++) {
+    passwordText += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  password.value = passwordText;
+};
+
+// Écouter les événements de changement sur les cases à cocher et le champ de longueur
+lengthInput.addEventListener("input", updateGenerateButton);
+lowercase.addEventListener("change", updateGenerateButton);
+uppercase.addEventListener("change", updateGenerateButton);
+numbers.addEventListener("change", updateGenerateButton);
+special.addEventListener("change", updateGenerateButton);
+copier.addEventListener("click", () => {
+  password.select();
+  document.execCommand("copy");
+});
+// Écouter le clic sur le bouton de génération de mot de passe
+generate.addEventListener("click", generateAndDisplayPassword);
+
+// Écouter le survol du champ de texte pour afficher le tooltip de copie
+password.addEventListener("mouseover", () => {
+  let tooltip = document.createElement("span");
+  tooltip.className = "tooltiptext";
+  tooltip.innerText = "Copier dans le presse-papier";
+  password.parentNode.insertBefore(tooltip, password.nextSibling);
+});
+
+// Écouter le clic sur le champ de texte pour copier le mot de passe dans le presse-papier
+/* password.addEventListener("click", () => {
+  password.select();
+  document.execCommand("copy");
+}); */
+
+    </script>
+</body>
+</html>

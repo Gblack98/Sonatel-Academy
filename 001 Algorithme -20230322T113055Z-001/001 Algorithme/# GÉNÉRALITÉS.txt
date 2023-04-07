@@ -1,0 +1,244 @@
+                       # GÉNÉRALITÉS 
+
+# Exercice 1
+
+Algorithme Entier;
+
+
+Variables: 
+ Entier a, Entier b, Reel c, Entier d, Entier e;
+
+Début 
+
+Écrire (" Entrer les deux entiers");
+Lire (a);
+Lire(b);
+c<—a/b;
+d<— mod b;
+e<—a div b;
+Écrire (" Le quotient entier est:",e,", le reste de la division:",d," et le ratio de la division :"c ); 
+
+Fin
+
+#Exercice 2
+
+Algorithme Conversion;
+ 
+Variables 
+Réel a;
+
+Début
+
+Écrire (" Entrez la valeur " );
+Lire ( a );
+Écrire (" En cm:",a*10,", En mm:",a*100,",  En m:",a/10," et En hm:", a/1000);
+
+Fin
+
+#Exercice 3
+
+Algorithme Température ;
+
+Variables 
+Réel a;
+
+Début
+
+Écrire ("Entrez la valeur");
+Lire(a);
+Écrire ( "En Fahrenheit, on aura alors :", a*(9/5)+32);
+
+Fin
+
+#Exercice 4
+
+Algorithme Change
+
+Variables:
+Entier a;
+
+Début
+
+Écrire (" Entrez la valeur en CFA");
+Lire (a);
+Écrire ( "Cela correspond à",a*(1/603)," Dollars, et à",a*(1/744)," Livres" );
+
+Fin
+
+#Exercice 5 
+
+Algorithme Cercle ;
+
+Variables:
+Réel a;
+Constante P;
+
+Début 
+
+P=3.14;
+
+Écrire (" Entrez le rayon ");
+Lire (a);
+Écrire ("La surface est de:",(a^2)*P," et le périmètre est de :", 2*a*P);
+
+Fin
+
+#Exercice 6
+
+Algorithme Rectangle;
+
+Variables:
+Réel a, Réel b;
+
+Début
+
+Écrire (" Entrez la longueur et la largeur ")
+Lire(a);
+Lire(b);
+Écrire ( " Le périmètre est de:",(a+b)*2,", la surface :", a*b," et la diagonale est égale à:", racine ( a^2 + b^2));
+
+Fin
+
+# Exercice 7
+
+Algorithme Résistance ;
+
+Variables:
+Réel a, Réel b, Réel c;
+
+Début
+
+Écrire (" Entrez les 3 valeurs ");
+Lire ( a, b, c);
+Écrire ( " la résistance en série est de :", a+b+c);
+Écrire (" la résistance en parallèle est de:", (a*b*c)/(a*b + a*c + b*c) );
+
+Fin
+
+# Exercice 8
+
+Algorithme Distance;
+
+Variables: 
+Réel a, b, c, d;
+
+Début
+
+Écrire ( "Donnez les coordonnées du point X, en donnant l'abscisse et l'ordonnée" );
+Lire (a,b);
+
+Écrire ( "Donnez les coordonnées du point Y, en donnant l'abscisse et l'ordonnée" );
+Lire (c,d);
+
+Écrire (" La distance des deux points est de:", racine((a-b)^2 + (c-d)^2 ));
+
+Fin
+
+#Exercice 9
+
+Algorithme Durée;
+
+Variables:
+Entier H, h, M, m, a, b;
+
+Début
+
+Écrire ("Entrez l'heure de départ en format Heure-Minute");
+Lire(H,M);
+
+Écrire ("Entrez l'heure d'arrivée en format Heure-Minute");
+Lire(h,m);
+
+Si (h>H)  alors:
+
+a<— abs((H*60 + M) - (h*60 + m));
+Écrire ( " La durée du trajet est:", a div 60," heures", a mod b," minutes);
+Sinon
+b<— abs(((24-H)*60 + M) + ( h*60+ m));
+Écrire ( " La durée du trajet est:", b div 60," heures", b mod 60, " minutes");
+FinSi
+
+Fin
+
+# Exercice 10
+
+Algorithme ConversionSeconde;
+
+Variables:
+Entier a, b,c, d;
+
+Début
+
+Écrire (" Entrez le nombre de seconde ");
+Lire ( a);
+
+b<— a div 3600;
+c<— (a mod 3600) div 60;
+d<— (a mod 3600) mod 60;
+
+Écrire (" Nous avons alors:", b, "heures",c," minutes",d," secondes ");
+
+Fin
+
+
+# Exercice 11
+
+Algorithme Produit;
+
+Variables Réel a,b;
+                 Chaine c;
+Constante d=18;              
+Début
+
+Écrire (" Entrez le libellé du produit :");
+Lire(c);
+
+Écrire (" Entrez la quantité de stock");
+Lire(a);
+
+Écrire ("Entrez le prix unitaire");
+Lire(b);
+
+Écrire (" Pour le produit :",c," le montant en stock est de",a*b,", le montant TTC est égale à:", (a*b)+(a*b)*d);
+
+Fin
+
+    
+# Exercice 12
+
+Algorithme Etudiant;
+
+Variables:
+       Chaine Nom, Prenom ;
+       Entier J, M, A ;
+Constante AC
+
+Début
+
+Écrire ("Entrez votre prénom :");
+Lire ( Prenom);
+
+Écrire ("Ecrire entrez votre Nom :");
+Lire ( Nom);
+
+Écrire ("Entrez votre date de naissance en format JJ/MM/AA");
+Lire (J,M,A);
+
+Écrire (Prenom," ", Nom,".  ", AC-A," ans.");
+
+# Exercice 13
+
+Algorithme  Capacite;
+
+Variables a;
+
+Début
+
+Écrire (" Entrez la valeur en byte :" );
+Lire(a);
+
+Écrire (" La valeur en octet est de :", a*8," bytes,"," en Kilo octets:", a*8*10^3,", en Méga octets :", a*8*10^6," octets," en Giga octets :', a*8*10^9," octets");
+
+Fin
+
+

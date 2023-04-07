@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+  
+  #notification {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+  .container{
+    background-color: gray;
+    width: min-content;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <button id="btn1" style="background-color:red;" onclick="afficherNotification(this)">Bouton rouge</button>
+  <button id="btn2" style="background-color:green;" onclick="afficherNotification(this)">Bouton vert</button>
+  <button id="btn3" style="background-color:blue;" onclick="afficherNotification(this)">Bouton bleu</button>
+  <button id="btn4" style="background-color:yellow;" onclick="afficherNotification(this)">Bouton jaune</button>
+</div>
+
+<div id="notification">
+</div>
+<script>
+const GABAR=document.getElementById("Gabar");
+function afficherNotification(btn) {
+  var couleur = window.getComputedStyle(btn).getPropertyValue("background-color");
+  
+  var notification = document.getElementById("notification");
+  notification.style.backgroundColor = couleur;
+  
+  notification.innerHTML = "Notification affichée!";
+  setTimeout(() => {
+    notification.innerHTML = "";
+    notification.style.backgroundColor="white";
+				}, 1000);
+}
+</script>
+
+</body>
+</html>

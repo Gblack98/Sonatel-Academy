@@ -1,0 +1,139 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>Compte à rebours 2024</title>
+    <style>
+         h1, #countdown {
+        font-size: 75px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 110px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+body {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(101,0,94,1) 8%, rgba(60,132,206,1) 38%, rgb(235, 186, 9) 53%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+    </style>
+  
+  </head>
+  <body>  
+    <div>
+       <h1>Compte à rebours pour 2024</h1>
+       <div id="countdown"></div>
+       <div class="wave"></div>
+       <div class="wave"></div>
+       <div class="wave"></div>
+    </div>
+
+    <script >
+        // Date cible (1er janvier 2023)
+        var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
+
+        // Mettre à jour le compte à rebours toutes les secondes
+        var x = setInterval(function() {
+
+        // Date actuelle
+        var now = new Date().getTime();
+
+        // Calculer la différence entre la date cible et la date actuelle
+        var distance = countDownDate - now;
+
+        // Calculer les jours, heures, minutes et secondes restants
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Afficher le compte à rebours dans l'élément avec l'id "countdown"
+        document.getElementById("countdown").innerHTML = "- " +days + "j " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // Si le compte à rebours est terminé, afficher un message
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+</body><!-- partial -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

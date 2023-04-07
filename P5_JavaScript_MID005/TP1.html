@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>composant</title>
+    <style id="jsbin-css">
+      body {
+        background-color:aqua
+      }
+      .composants {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px;
+      }
+      .composant {
+        width: 250px;
+        height: 250px;
+        margin: 10px;
+        background-color: white;
+        border: 35px solid rgb(109, 128, 0);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 10px 10px 10px black;
+        border-right-width: 0px;
+        border-left-width: 0px;
+        border-bottom-width: 0px;
+      }
+      .composant button {
+        margin-right: 10px;
+      }
+      .composant textarea {
+        display: block;
+        width: 50%;
+        margin-bottom: 10px;
+      }
+      button{
+        margin-left: 8px;
+        
+      }
+      svg{
+        margin-top: 6px;
+      }
+      .Suppr{
+        padding-inline: auto;
+      }
+      .btns{
+        display: inline-flex;
+
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="handleAddNew()">
+      <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12h14"></path>
+      </svg>
+    </button>
+    <div class="composants">
+    </div>
+    
+
+    <script id="jsbin-javascript">
+      const composants = [];
+      let modifiable = false;
+      let text = "";
+
+      const handleAddNew = () => {
+        const composant = `
+        <div class="composant">
+            <div class="btns">
+            <div class="modif">
+                <button onclick="handleEdit(this)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" margin-top="0" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="Suppr">
+                <button onclick="handleDelete()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" margin-top="0" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                </button>
+            </div>
+        </div><br><br><br><br><br>
+        <textarea id="text-area"></textarea>
+      </div>
+        `;
+        composants.push(composant);
+        document.querySelector(".composants").innerHTML = composants.join("");
+      };
+
+      const handleEdit = (button) => {
+        modifiable = !modifiable;
+        const composant = button.closest(".composant");
+        composant.querySelector("#text-area").disabled = !modifiable;
+      };
+
+      const handleDelete = (index) => {
+      composants.splice(index, 1);
+      document.getElementsByClassName('composant').innerHTML = composants.join('');
+    };
+
+
+      const setText = (value) => {
+        text = value;
+      };
+    </script>
+  </body>
+</html>

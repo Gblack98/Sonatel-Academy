@@ -1,0 +1,42 @@
+                # Fonction et Procédure
+
+# Exercice 1:
+
+Algorithme bissextile ;
+Fonction Bissextile (a):
+Début      
+     Si (a mod  4=0) et ((a mod  100>0) ou (a mod  400=0)) alors :
+             Écrire (a, " est bissextile");
+     Sinon
+             Écrire (a, "n'est pas bissextile");
+     FinSi
+ Fin
+
+Variable :
+Entier annee;
+Début
+        Écrire ("Entrez une année :");
+        Lire(annee);
+        Bissextile (annee);
+Fin
+
+# Exercice 2:
+Fonction jours ( a, m):
+Début
+       Si (m=1 ou m=3 ou m=5 ou m= 7 ou m=8 ou m=10 ou m=12):
+              Écrire("31 jours");
+       FinSi
+       Si ( m=4 ou m=6 ou m=9 ou m=11):
+              Écrire ("30 jours")
+       FinSi 
+       Si (m=2):
+              Si (a mod  4=0) et ((a mod  100>0) ou (a mod  400=0)) alors :             
+                     Écrire (" 29 jours ! ");
+              Sinon
+                     Écrire ( " N'est pas bissextile");
+              FinSi
+       Sinon 
+ Fin
+
+# Exercice 3:
+

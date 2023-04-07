@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exemple de boutons de déplacement d'éléments</title>
+	<style>
+        body{
+            background-color: gray;
+        }
+		#left-div {
+			display: inline-block;
+			vertical-align: top;
+			padding: 10px;
+			overflow-y: scroll;
+            width: 400px;
+            height: 400px;
+            margin: 30px;
+            background-color: white;
+            border: 0px solid;
+            border-radius: 6%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 10px 10px 10px black;
+		}
+        #right-div{
+            width: 400px;
+			height: 400px;
+			margin: 30px;
+			margin-left: auto;
+			margin-top: -430px;
+			background-color: white;
+			border: 0px solid;
+			border-radius: 6%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 10px 10px 10px black;
+			}
+			#left-div span, #right-div span  {
+				display:flex;
+				padding: 5px;
+				border-bottom: 1px solid gray;
+			}
+			#move-left-btn {
+				position: absolute;
+				display: flex;
+				top: 40%; left: 47%; /* à 50%/50% du parent référent */
+				transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+			}
+            #move-right-btn{
+                position: absolute;
+				display: flex;
+				top: 40%; left: 50%; /* à 50%/50% du parent référent */
+				transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */                
+            }
+			
+			#move-left-btn :hover {
+				background-color: blue;
+			}
+			.notification {
+				position: fixed;
+				top: 10px;
+				right: 10px;
+				padding: 10px;
+				background-color: #ffcc00;
+				color: black;
+				border: 2px solid black;
+				border-radius: 5px;
+				z-index: 9999;
+			}
+            #left-div :hover{background-color: blue;}
+            #right-div :hover{background-color: blue;}
+            button :hover{
+                background-color: blue;
+            }
+            #move-right-btn :hover{
+                color: blue;
+            }
+		</style>
+	</head>
+	<body>
+		<div id="left-div">
+			<span>Mon Premier</span>
+			<span>Mon Deuxieme</span>
+			<span>Mon Troisieme</span>
+			<span>Mon Quatrieme</span>
+			<span>Mon Cinquieme</span>
+			<span>Mon Sixieme</span>
+			<span>Mon Septieme</span>
+			<span>Mon Huitieme</span>
+		</div>
+		<div id="right-div"></div>
+
+		<button id="move-right-btn" class="button disabled">>></button>
+		<button id="move-left-btn" class="button disabled"><<</button>
+
+		<div id="notification-container"></div>
+
+		<script>
+			const leftDiv = document.getElementById('left-div');
+			const rightDiv = document.getElementById('right-div');
+			const moveRightBtn = document.getElementById('move-right-btn');
+			const moveLeftBtn = document.getElementById('move-left-btn');
+			const notificationContainer = document.getElementById('notification-container');
+
+			// Fonction qui met à jour l'état des boutons en fonction du contenu des divs
+			function updateButtons() {
+				if (leftDiv.children.length > 0) {
+					moveRightBtn.classList.remove('disabled');
+				} else {
+					moveRightBtn.classList.add('disabled');
+				}
+
+				if (rightDiv.children.length > 0) {
+					moveLeftBtn.classList.remove('disabled');
+				} else {
+					moveLeftBtn.classList.add('disabled');
+				}
+			}
+
+			// Fonction qui déplace un élément de gauche à droite ou de droite à gauche
+			function moveElement(sourceDiv, targetDiv, element) {
+				sourceDiv.removeChild(element);
+				targetDiv.appendChild(element);
+
+				const message = element.innerText + ' déplacé(e) ' + (sourceDiv === leftDiv ? 'vers la droite' : 'vers la gauche');
+				showNotification(message);
+				updateButtons();
+			}
+
+			// Fonction qui affiche une notification pendant 1 seconde
+			function showNotification(message) {
+				const notification = document.createElement('div');
+				notification.innerText = message;
+				notification.classList.add('notification');
+				notificationContainer.appendChild(notification);
+
+				setTimeout(() => {
+					notificationContainer.removeChild(notification);
+				}, 1000);
+			}
+
+			// Ajout des événements sur les boutons de déplacement
+			moveRightBtn.addEventListener('click', () => {
+			const selectedElement = leftDiv.querySelector('span.selected');
+			if (selectedElement) {
+				moveElement(leftDiv, rightDiv, selectedElement);
+			}
+			});
+
+			moveLeftBtn.addEventListener('click', () => {
+				const selectedElement = rightDiv.querySelector('span.selected');
+				if (selectedElement) {
+					moveElement(rightDiv, leftDiv, selectedElement);
+				}
+			});
+
+			// Ajout de l'événement de sélection sur les éléments des divs
+			leftDiv.addEventListener('mouseover', (event) => {
+				if (event.target.tagName === 'SPAN') {
+					const selectedElement = leftDiv.querySelector('span.selected');
+					if (selectedElement) {
+						selectedElement.classList.remove('selected');
+					}
+
+					event.target.classList.add('selected');
+					updateButtons();
+				}
+			});
+
+			rightDiv.addEventListener('click', (event) => {
+				if (event.target.tagName === 'SPAN') {
+					const selectedElement = rightDiv.querySelector('span.selected');
+					if (selectedElement) {
+						selectedElement.classList.remove('selected');
+					}
+
+					event.target.classList.add('selected');
+					updateButtons();
+				}
+			});
+
+			// Appel initial de la fonction pour mettre à jour l'état des boutons
+			updateButtons();
+		</script>
+    </body>
+</html>

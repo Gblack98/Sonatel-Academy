@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalogue de films</title>
+    <style>
+    *{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+form {
+    display: flex;
+}
+
+input[type=text] {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+button[type=submit] {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+}
+
+.movie img {
+    width: 100%;
+}
+
+.modal {
+    display: none; /* Masquer la fenêtre modale par défaut */
+    position: fixed; /* Position fixe pour la fenêtre modale */
+    z-index: 1; /* Mettre la fenêtre modale au-dessus du reste du contenu */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Activer le défilement si nécessaire */
+    background-color: rgba(0,0,0,0.9); /* Fond noir semi-transparent */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Catalogue de films</h1>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Rechercher un film...">
+            <button type="submit">Rechercher</button>
+        </form>
+    </header>
+
+    <main id="main">
+        <!-- Les films seront ajoutés ici par JavaScript -->
+    </main>
+
+    <div id="movie-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="movie-title"></h2>
+            <p id="movie-overview"></p>
+        </div>
+    </div>
+
+    <script>
+        const APIURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
+const IMGPATH = "https://image.tmdb.org/t/p/w1280";
+const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
+
+const main = document.getElementById('main');
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+const movieModal = document.getElementById('movie-modal');
+const movieTitle = document.getElementById('movie-title');
+const movieOverview = document.getElementById('movie-overview');
+const modalClose = document.getElementsByClassName('close')[0];
+
+// Afficher les films du catalogue
+getMovies(APIURL);
+
+async function getMovies(url) {
+  const res = await fetch(url);
+  const data = await res.json();
+
+  showMovies(data.results);
+}
+
+function showMovies(movies) {
+  main.innerHTML = '';
+
+  movies.forEach((movie) => {
+      const { title, poster_path, vote_average, overview } = movie;
+
+      const movieEl = document.createElement('div');
+       movieEl.classList.add('movie');
+      movieEl.innerHTML = `
+          <img src="${IMGPATH + poster_path}" alt="${title}">
+          <div class="movie-info">
+              <h3>${title}</h3>
+              <span class="${getClassByRate(vote_average)}">${vote_average}</span>
+          </div>
+          <div class="overview">
+              <h3>${title}</h3>
+              <p>${overview}</p>
+          </div>
+      `;
+
+      overview = movieEl.querySelector('.overview');
+      movieEl.addEventListener('mouseover', () => {
+          overview.classList.add('show');
+      });
+
+      movieEl.addEventListener('mouseout', () => {
+          overview.classList.remove('show');
+      });
+
+      main.appendChild(movieEl);
+  });
+}
+
+function getClassByRate(vote) {
+  if (vote >= 8) {
+      return 'green';
+  } else if (vote >= 5) {
+      return 'orange';
+  } else {
+      return 'red';
+  }
+}
+
+// Rechercher des films
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const searchTerm = searchInput.value;
+
+  if (searchTerm && searchTerm !== '') {
+      getMovies(SEARCHAPI + searchTerm);
+
+      searchInput.value = '';
+  } else {
+      window.location.reload();
+  }
+});
+
+// Afficher la fenêtre modale
+function showModal(title, overview) {
+  movieTitle.innerText = title;
+  movieOverview.innerText = overview;
+
+  movieModal.style.display = 'block';
+}
+
+// Fermer la fenêtre modale
+modalClose.addEventListener('click', () => {
+  movieModal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target == movieModal) {
+      movieModal.style.display = 'none';
+  }
+});
+    </script>
+</body>
+</html>
+ 

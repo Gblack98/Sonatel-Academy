@@ -1,0 +1,374 @@
+                   # Structure Itérative
+
+# Exercise 1
+
+Algorithme Parfait;
+
+Variable:
+Entier a, b, cpt ;
+Début
+      Faire :
+               Écrire ("Entrez un nombre positif :");
+               Lire( a);
+      Tant que ( a>0)
+      cpt<—0;
+      Pour i allant de (1) à (a):
+               Si a%i=0 alors:
+                     cpt<—cpt+i ;
+               FinSi 
+      FinPour
+      Si (a=cpt) alors :
+            Écrire ("C'est un nombre parfait");
+      Sinon :
+            Écrire ("Ce n'est pas un nombre parfait");
+      FinSi 
+Fin
+
+# Exercice 2:
+
+Algorithme Somme ;
+
+Variable:
+Entier n, i, som ;
+
+Début
+     Écrire (" Entrez un entier");
+     Lire(n);
+     som<—0
+     Pour i allant de 0 à n:
+              som<—som+i;
+     FinPour
+     Écrire ("Somme :",som)
+Fin
+
+#Moyenne
+
+Algorithme Moyenne ;
+
+Variable:
+Entier n, I, som, cpt;
+Début
+     Écrire ("Entrez un nombre : ")
+     Lire(n)
+     som<—0
+     Pour i allant de 0 à n:
+              som<—som+i;
+              cpt++;
+     FinPour
+     Écrire("Moyenne", som/cpt);
+Fin
+
+# Exercice 3:
+Algorithme division;
+
+Variable: 
+Entier a, b, cpt;
+Début 
+      Faire:
+           Écrire ("Entrez deux nombres");
+           Lire(a,b)
+      Tant que ( a>0 et b>0)
+      cpt<—0;
+      Si (a>=b) alors:
+           Tant que (a-b)>=0:
+                  a<—a-b;
+                  cpt++;
+           FinTantque
+           Écrire (a," Divisé par ,"b," = ",cpt);
+      Sinon 
+           Tant que (b-a)>0:
+                  b<—b-a;
+                  cpt++;
+           FinTantque
+           Écrire (b" Divisé par ,"a," = ",cpt);
+      FinSi
+Fin
+
+# Exercice 4:
+ Algorithme Pgcd;
+Variable:
+Entier a, b, c, min, tmp ;
+
+Début
+      Faire :
+             Écrire("Entrez les deux nombres :");c
+             Lire (a, b); 
+      Tant que (a>0 et b>0):
+       Si (a>=b):
+             min<—b;    
+             c<—a-min;
+             faire :
+                   c<— c - min;
+                   Si c<min:
+                         tmp<—min;
+                         min<—c;
+                         c<—tmp;
+            Tant que (c≠0);
+             Écrire ("Pgcd=", min);
+       Sinon
+               min<—a;    
+             c<—b-min;
+             faire :
+                   c<— c - min;
+                   Si c<min:
+                         tmp<—min;
+                         min<—c;
+                         c<—tmp;
+            Tant que (c≠0);
+             Écrire ("Pgcd=", min);             
+       FinSi
+Fin
+        
+# Exercice 5 :
+
+Algorithme  PPCM;
+
+
+
+# Exercice 6
+
+Algorithme Prix ;
+
+Variable
+Entier som, k;
+
+Début
+     Faire
+             Écrire ("Entrez le montant");
+             Lire(k)
+     Tantque k>=0;
+     Som<—k;
+     Faire:
+             Som=Som+i;
+             Écrire ("Entrez un autre montant");
+             Lire(i)
+     Tantque i≠0
+     Écrire (" La somme est de :",Som);
+Fin
+
+# Exercice 7:
+
+Algorithme liste ;
+Variable :
+Entier i, j max;
+tab: tableau [10] de Entier;
+Début
+       Pour i allant 1 à 10:
+                 Écrire ("Entez un nombre");
+                 Lire(tab[i]);
+       FinPour
+       max=tab[1]
+       Pour i allant de 1 à 10:
+                Pour j allant de i+1 à 10:
+                         Si tab [j]>max alors:
+                                   max=tab[j];
+                         FinSi
+                FinPour
+       FinPour
+
+       Écrire("Le plus grand nombre est:",max);
+Fin
+
+# Exercice 8:
+
+Algorithme Jeu;
+Variable :
+Entier n, score ;
+
+Début
+Scrore=20
+Faire
+       Entrez("Devinez le nombre");
+       Lire(n);
+       Si (n>16) alors:
+               Écrire ("Trop grand ! ");
+       Sinon :
+               Si (n<16) alors:
+                      Écrire ("Trop Petit !");
+               Sinon 
+                      Écrire ("Trouvé !!");
+               Finsi
+       Finsi 
+       scrore--;
+Tantque (n≠16)
+Fin
+
+# Exercice 9:
+Algorithme Séquences;
+
+
+# Exercice 10:
+
+Algorithme NombresAmis;
+Variable :
+Entier M, N, cpt, som, I, j ;
+Début
+    Faire :
+         Écrire ("Entrez les deux nombres");
+         Lire(N, M);
+    Tantque (N>=0 et M>=0)
+    som=0 
+    Pour i allant de 2 à N-1:
+               Si (N%i=0) alors :
+                        som=som+i
+               FinSi
+    FinPour 
+    Pour j allant de 2 à M-1:
+               Si (M%i=0):
+                        cpt=cpt+j;
+               FinSi
+    FinPour 
+    Si (som=N et cpt=M):
+               Écrire ("Les deux nombres sont amicaux");
+    Sinon
+               Écrire ("Non amicaux");
+    FinSi 
+    
+Fin
+
+# Exercice 11:
+
+Algorithme Premier ;
+Variable:
+Entier a, cpt, i ;
+
+Début
+        Faire :
+             Écrire ("Entrez un nombre :");
+             Lire(a);
+        Tant (a>0)
+         cpt=0
+        Pour i allant de 2 à a:
+              Si (a%i)=0 alors: 
+                    cpt++;
+              FinSi
+        FinPour
+        Si (cpt=1) alors:
+              Écrire ("Ce nombre est premier !");
+        Sinon
+              Écrire (" Ce nombre n'est pas premier !");
+        FinSi
+Fin
+
+# Exercice 12:
+
+Algorithme Parfait ;
+Variable :
+Entier n, i, som ;
+Début
+     Faire:
+           Écrire ("Entrez un entier positif :");
+           Lire(n)
+     Tantque (n>0)
+     sim=0
+     Pour i allant de 1 à n:
+             Si (n%i=0) alors:
+                    som=som+i ;
+             FinSi
+     FinPour
+     Si (som=n):
+             Écrire ("C'est un nombre parfait !");
+     Sinon
+             Écrire ("Ce n'est pas un nombre parfait !");
+     FinSi
+Fin
+
+# Exercice 13:
+
+Algorithme Nombres ;
+Variable :
+Entier a, i, cpt1, cpt2, cpt3;
+Début
+     cpt1=0;
+     cpt2=0;
+     cpt3=0;
+     Faire :
+          Écrire ("Entrez un nombre :");
+          Lire (a);
+          cpt1++
+          Pour i allant de (2 à a):
+                   Si (a%i=0) alors :
+                           cpt2++
+                   FinSi
+          Si (cpt2=1):
+                   Écrire (a," est premier !");
+                   cpt3++;
+          FinSi 
+                  
+     Tantque (a>0)
+     Écrire (" Le nombre d'entier saisit est de ", cpt1);
+     Écrire ("Le nombre saisi de nombre premier est de :", cpt3);
+ Fin
+
+# Exercice 14:
+
+Algorithme Premier2;
+Variable:
+Entier N, cpt;
+Début
+      Faire :
+             Écrire ("Entrez un nombre :");
+             Lire(N);
+      Tantque (N>0)
+      cpt=0
+      Pour i allant de 2 à N
+             Pour j allant de 2 à i :
+                    Si (i%j=0) alors :
+                           cpt++;
+                    FinSi
+                    Écrire (i," est un nombre premier !");
+             FinPour
+      FinPour 
+Fin
+
+# Exercice 15:
+Algorithme Premier3;
+Variable:
+Entier N, n, cpt, cpt1;
+Début
+      Faire :
+             Écrire ("Entrez un nombre :");
+             Lire(N);
+             Écrire ("Combien de nombre premier souhaiteriez vous afficher ?");
+             Lire(n);
+      Tantque (N>0 et n>0)
+      cpt=0;
+      cpt1=0;
+      Tantque (cpt1<n)
+             Pour i allant de 2 à  N:
+                    Pour j allant de 2 à i;
+                            Si (i%j=0) alors :
+                                   cpt++;
+                            FinSi
+                    Si (cpt=1) alors :
+                                   Écrire (i);
+                    FinSi 
+                    Écrire (i," est un nombre premier !");
+                    FinPour 
+             cpt1++;
+             FinPour
+      FinTantque 
+Fin                                
+
+# Exercice 16:
+Algorithme Sapin ;
+Variable 
+Entier h, r, t, i;
+Char g;
+Début
+       Faire :
+            Écrire ("Entrez la hauteur, la taille des racines et du tronc :");
+            Lire(h, r, t);
+       Tantque (h>0 et r>0 et t>0)
+       Pour i allant de 0 à h:
+                 espace = " " * (h - i - 1)
+                 asterisques = "*" * (2 * i + 1)
+                 Écrire (espace + asterisques)
+       FinPour
+       Pour i allant de 1 à t:
+                Écrire ("   *   ");
+       FinPour
+       Écrire ("*"*r);
+Fin
+
+       
